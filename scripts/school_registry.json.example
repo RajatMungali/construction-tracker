@@ -1,0 +1,14 @@
+{
+  "_comment": "Maps internal school ids (matching public/data/schools.json) to IPEDS UnitID, the stable key Scorecard/IPEDS bulk files use to join. UnitIDs below are PLACEHOLDERS — do not run pull_backbone.py against real data until these are filled in. Look each one up at https://collegescorecard.ed.gov/data/data-documentation (search the school, the UnitID is in the result URL) or https://nces.ed.gov/collegenavigator. This file is intentionally NOT auto-generated: it's the one human-verified anchor the rest of the pipeline depends on.",
+
+  "uconn": { "unitid": "REPLACE_ME", "official_name": "University of Connecticut" },
+  "northeastern": { "unitid": "REPLACE_ME", "official_name": "Northeastern University" },
+  "dartmouth": { "unitid": "REPLACE_ME", "official_name": "Dartmouth College" },
+  "wesleyan": { "unitid": "REPLACE_ME", "official_name": "Wesleyan University" },
+  "trinity": { "unitid": "REPLACE_ME", "official_name": "Trinity College" },
+  "umass": { "unitid": "REPLACE_ME", "official_name": "University of Massachusetts Amherst" },
+  "bridgewater": { "unitid": "REPLACE_ME", "official_name": "Bridgewater State University" },
+  "umaine": { "unitid": "REPLACE_ME", "official_name": "University of Maine" },
+  "hartford": { "unitid": "REPLACE_ME", "official_name": "University of Hartford" },
+  "snhu": { "unitid": "REPLACE_ME", "official_name": "Southern New Hampshire University" }
+}

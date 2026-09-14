@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { ChevronDown, Search, Info, AlertTriangle, X } from "lucide-react";
-import { SCHOOLS, RUBRIC, tierFor, scoreTotal } from "./data.js";
+import { RUBRIC, tierFor, scoreTotal } from "./scoring.js";
 
 /* ============================================================
    DESIGN TOKENS — light beige / black, tier + category colors
@@ -120,14 +120,26 @@ function Methodology({ onClose }) {
    MAIN
    ============================================================ */
 export default function App() {
+  const [schools, setSchools] = useState(null);
+  const [loadError, setLoadError] = useState(null);
   const [query, setQuery] = useState("");
   const [tierFilter, setTierFilter] = useState("All");
   const [expanded, setExpanded] = useState(null);
   const [showMethod, setShowMethod] = useState(false);
 
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/schools.json`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(setSchools)
+      .catch((e) => setLoadError(e.message));
+  }, []);
+
   const withTotals = useMemo(
-    () => SCHOOLS.map((s) => ({ ...s, total: scoreTotal(s.subscores), tier: tierFor(scoreTotal(s.subscores)) })),
-    []
+    () => (schools || []).map((s) => ({ ...s, total: scoreTotal(s.subscores), tier: tierFor(scoreTotal(s.subscores)) })),
+    [schools]
   );
 
   const tierOptions = ["All", "Top pick", "Strong", "Moderate", "Caution", "Quiet"];
@@ -234,6 +246,15 @@ export default function App() {
         </div>
 
         {showMethod && <Methodology onClose={() => setShowMethod(false)} />}
+
+        {loadError && (
+          <div style={{ ...body, fontSize: 13, color: C.tiers.Caution.fg, background: C.tiers.Caution.bg, border: `1px solid ${C.tiers.Caution.border}`, borderRadius: 8, padding: 14, marginBottom: 16 }}>
+            Couldn't load school data ({loadError}). Check that public/data/schools.json exists and is valid JSON.
+          </div>
+        )}
+        {!schools && !loadError && (
+          <div style={{ ...body, fontSize: 13, color: C.textMuted, padding: 24, textAlign: "center" }}>Loading schools…</div>
+        )}
 
         {/* Ranked list */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

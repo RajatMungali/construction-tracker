@@ -1,0 +1,39 @@
+name: Refresh backbone data
+
+# Runs automatically once a year (Scorecard/IPEDS data updates on this
+# rough cadence), plus can be triggered manually from the Actions tab
+# any time you want a fresh pull.
+on:
+  schedule:
+    - cron: "0 13 15 9 *"  # 9am ET, Sept 15 — after Scorecard's typical fall refresh
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run backbone pull
+        run: python scripts/pull_backbone.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "backbone-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet public/data/schools.json; then
+            echo "No changes — Scorecard data unchanged since last run."
+          else
+            git add public/data/schools.json
+            git commit -m "chore: refresh backbone data ($(date +%Y-%m-%d))"
+            git push
+          fi
