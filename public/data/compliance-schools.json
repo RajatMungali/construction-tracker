@@ -1,0 +1,522 @@
+[
+  {
+    "id": "salemstate",
+    "name": "Salem State University",
+    "type": "Public",
+    "state": "MA",
+    "location": "Salem, MA",
+    "degrees": "Bachelor's–Master's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 30,
+        "note": "State-owned facility bound to MA's legally mandated 50% by 2030 / net-zero by 2050 emissions targets (Next-Generation Roadmap Act)"
+      },
+      "deadlineProximity": {
+        "score": 18,
+        "note": "2030 interim target ~4 years out"
+      },
+      "fundingAttached": {
+        "score": 20,
+        "note": "Named recipient of a $7.5M DCAMM Leading by Example grant (shared with Mass Maritime) for geothermal phase 1 — real dollar figure, not just a pledge"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official Mass.gov press release naming SSU directly"
+      }
+    },
+    "flagNote": "Named alongside Mass Maritime in a confirmed $7.5M state decarbonization grant — legal mandate plus funding already attached, not just a voluntary pledge.",
+    "details": {
+      "financial": {
+        "text": "DCAMM awarded $7.5M to support large-scale geothermal projects at Massachusetts Maritime Academy and Salem State University, funding first-phase work connecting several buildings on each campus to a geothermal system.",
+        "source": "Mass.gov press release, Executive Office of Energy and Environmental Affairs / DOER",
+        "asOf": "Jul 16, 2026"
+      }
+    }
+  },
+  {
+    "id": "massmaritime",
+    "name": "Massachusetts Maritime Academy",
+    "type": "Public",
+    "state": "MA",
+    "location": "Buzzards Bay, MA",
+    "degrees": "Bachelor's–Master's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 30,
+        "note": "State-owned facility, same MA net-zero/2030 legal mandate as other public MA colleges"
+      },
+      "deadlineProximity": {
+        "score": 18,
+        "note": "2030 interim target ~4 years out"
+      },
+      "fundingAttached": {
+        "score": 20,
+        "note": "Named recipient of the same $7.5M DCAMM grant (shared with Salem State) for geothermal phase 1"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official Mass.gov press release naming MMA directly"
+      }
+    },
+    "flagNote": "A specialized, low-profile public academy landing real decarbonization construction funding — exactly the kind of school a prestige-only screen would miss.",
+    "details": {
+      "financial": {
+        "text": "DCAMM awarded $7.5M (shared with Salem State) to connect campus buildings to new geothermal systems, laying groundwork for further decarbonization; expected to cut on-site fossil fuel emissions at both schools combined by at least 50%.",
+        "source": "Mass.gov press release, Executive Office of Energy and Environmental Affairs / DOER",
+        "asOf": "Jul 16, 2026"
+      }
+    }
+  },
+  {
+    "id": "umassboston",
+    "name": "University of Massachusetts Boston",
+    "type": "Public",
+    "state": "MA",
+    "location": "Boston, MA",
+    "degrees": "Bachelor's–Doctoral",
+    "subscores": {
+      "mandateStrength": {
+        "score": 30,
+        "note": "State-owned facility bound to MA net-zero mandate; also subject to Boston's BERDO ordinance as a Boston-located institution"
+      },
+      "deadlineProximity": {
+        "score": 20,
+        "note": "Chancellor states the project will beat both the 2030 and 2040 state targets ahead of schedule"
+      },
+      "fundingAttached": {
+        "score": 24,
+        "note": "Confirmed $5.3M DIG grant, funding replacement of central plant gas boilers with electric heat-shift chillers"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via Mass.gov press release plus an on-record Chancellor quote"
+      }
+    },
+    "flagNote": "One of the three schools the original brief specifically named as a real anti-prestige signal — real funded construction, not a pledge.",
+    "details": {
+      "financial": {
+        "text": "Awarded $5.3M to fund the initial phases of a campus-wide decarbonization plan, replacing central power plant natural gas boilers with three electric heat-shift chillers; expected to cut Central Utility Plant natural gas use by ~82%, ahead of the Commonwealth's 2030/2040 targets per the Chancellor's own statement.",
+        "source": "Mass.gov press release, Executive Office of Energy and Environmental Affairs / DOER",
+        "asOf": "Jul 16, 2026"
+      }
+    }
+  },
+  {
+    "id": "emerson",
+    "name": "Emerson College",
+    "type": "Private",
+    "state": "MA",
+    "location": "Boston, MA",
+    "degrees": "Bachelor's–Master's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 24,
+        "note": "Voluntary carbon-neutral-by-2030 institutional pledge, but also legally covered by Boston's BERDO ordinance (binding emissions caps + daily fines for large buildings)"
+      },
+      "deadlineProximity": {
+        "score": 20,
+        "note": "Self-set 2030 carbon-neutral target"
+      },
+      "fundingAttached": {
+        "score": 8,
+        "note": "No public grant dollar figure — decarbonization funded via a private energy-service partnership (Vicinity Energy eSteam), not a disclosed capital number"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via Higher Ed Dive reporting and Emerson/Vicinity's own published case study"
+      }
+    },
+    "flagNote": "A small, urban, non-flagship private college moving first on a named decarbonization technology to hit both its own pledge and BERDO's legal deadlines.",
+    "details": {
+      "financial": {
+        "text": "Partnered with Vicinity Energy to convert to \"eSteam,\" a carbon-free district steam product, aiming to decarbonize 100% of campus heating — positioned explicitly as a way to meet both Emerson's 2030 carbon-neutral pledge and Boston's BERDO emissions requirements. No public capital cost figure disclosed for the conversion itself.",
+        "source": "Higher Ed Dive; Vicinity Energy customer case study",
+        "asOf": "Jul 2024 (Higher Ed Dive); Nov 2025 (Vicinity case study)"
+      }
+    }
+  },
+  {
+    "id": "quinsigamond",
+    "name": "Quinsigamond Community College",
+    "type": "Public",
+    "state": "MA",
+    "location": "Worcester, MA",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 28,
+        "note": "State-owned facility, same MA net-zero legal mandate"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 8,
+        "note": "Early-stage: a $25,600 state feasibility study grant for a large-scale solar canopy + battery storage — real state money, but pre-construction, not a build yet"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official Mass.gov Leading by Example grant records"
+      }
+    },
+    "flagNote": "Currently at the feasibility-study stage for a large solar canopy project — an early, pre-construction signal worth tracking as the study concludes.",
+    "details": {
+      "financial": {
+        "text": "Awarded a $25,600 Leading by Example feasibility study grant (2020) to assess a large-scale solar canopy with battery storage at its Worcester campus, including the impact of interconnecting the system.",
+        "source": "Mass.gov, Leading by Example Awarded Grant Descriptions",
+        "asOf": "2020"
+      }
+    }
+  },
+  {
+    "id": "roxburycc",
+    "name": "Roxbury Community College",
+    "type": "Public",
+    "state": "MA",
+    "location": "Roxbury, Boston, MA",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 30,
+        "note": "State-owned facility bound to MA net-zero mandate; Boston location also brings BERDO exposure"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 15,
+        "note": "937 kW solar canopy already completed (2016) as part of a larger DCAMM energy project, ~$5.3M in projected 20-year energy cost savings — a completed project, not a pending one, so read as a track record rather than an active near-term build"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official Mass.gov Leading by Example grant records"
+      }
+    },
+    "flagNote": "A small Boston-based community college already carrying a completed large-scale solar project — a track record of using state decarbonization funding for real construction.",
+    "details": {
+      "financial": {
+        "text": "A 937 kW solar canopy over the college's Parking Lot No. 1, completed in 2016 as part of a larger DCAMM energy project, projected to cut GHG emissions by 369 metric tons/year and reduce energy costs by an estimated $5.3M over 20 years.",
+        "source": "Mass.gov, Leading by Example Awarded Grant Descriptions",
+        "asOf": "Completed 2016"
+      }
+    }
+  },
+  {
+    "id": "berkshirecc",
+    "name": "Berkshire Community College",
+    "type": "Public",
+    "state": "MA",
+    "location": "Pittsfield, MA",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 28,
+        "note": "State-owned facility, same MA net-zero legal mandate"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 10,
+        "note": "Recognized for solar PV generating ~20% of campus electricity; no new dollar figure disclosed in this recognition for a pending project"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official 2019 Mass.gov Leading by Example Awards press release"
+      }
+    },
+    "flagNote": "A small Berkshires public college with an already-strong sustainability record (81% waste diversion, 2nd nationally in Recyclemania) — a credible compliance-minded client, not yet tied to a new dollar figure.",
+    "details": {
+      "financial": {
+        "text": "Recognized at the 2019 Leading by Example Awards for solar PV generating the equivalent of ~20% of campus electricity consumption, an 81% waste diversion rate, and other sustainability initiatives.",
+        "source": "Mass.gov, 2019 Leading by Example Awards press release",
+        "asOf": "2019"
+      }
+    }
+  },
+  {
+    "id": "massasoit",
+    "name": "Massasoit Community College",
+    "type": "Public",
+    "state": "MA",
+    "location": "Brockton, MA",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 28,
+        "note": "State-owned facility, same MA net-zero legal mandate"
+      },
+      "deadlineProximity": {
+        "score": 16,
+        "note": "2030 interim target, though the underlying project is now over a decade old"
+      },
+      "fundingAttached": {
+        "score": 16,
+        "note": "A completed, large DCAMM-led energy/water conservation retrofit projected to save $12M over 20 years and cut energy use 40% — real dollar scale, but historical, not a current pending project"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official Mass.gov Leading by Example award record"
+      }
+    },
+    "flagNote": "One of the largest verified dollar-savings figures in this list ($12M/20yr) — dated, but shows the school has a real track record of major DCAMM-partnered capital retrofits.",
+    "details": {
+      "financial": {
+        "text": "Under the leadership of a former VP of Administration/CFO (2007–2012), Massasoit completed a comprehensive energy and water conservation project with DCAMM, projected to cut energy use 40% and save $12M over 20 years; also installed 370 kW of solar PV across five campus buildings.",
+        "source": "Mass.gov, 2012 Leading by Example Award Winners",
+        "asOf": "~2012"
+      }
+    }
+  },
+  {
+    "id": "capecodcc",
+    "name": "Cape Cod Community College",
+    "type": "Public",
+    "state": "MA",
+    "location": "West Barnstable, MA",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 28,
+        "note": "State-owned facility, same MA net-zero legal mandate"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 15,
+        "note": "Confirmed $170,000 state grant for a 635 kW solar canopy, plus an already-built zero-net-energy science building"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via the college's own news release and independent local reporting (CapeCod.com)"
+      }
+    },
+    "flagNote": "Only community college recognized at the 2022 statewide Leading by Example awards — a 67% emissions cut since 2004 and an active, newly-funded solar canopy project.",
+    "details": {
+      "financial": {
+        "text": "Received a $170,000 state grant for a 635 kW third-party-owned solar canopy at its Lot 12 parking area, alongside its existing net-zero-energy Frank and Maureen Wilkens Science and Engineering Center. Recognized at the 16th Annual Leading by Example Awards for a 67% cut in campus GHG emissions vs. a 2004 baseline.",
+        "source": "CapeCod.com; Cape Cod Community College news release",
+        "asOf": "Grant: 2021; Award: Dec 2022"
+      }
+    }
+  },
+  {
+    "id": "northshorecc",
+    "name": "North Shore Community College",
+    "type": "Public",
+    "state": "MA",
+    "location": "Danvers, MA",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 28,
+        "note": "State-owned facility, same MA net-zero legal mandate"
+      },
+      "deadlineProximity": {
+        "score": 14,
+        "note": "2030 interim target, though the flagship project itself dates to ~2012"
+      },
+      "fundingAttached": {
+        "score": 12,
+        "note": "Built the first state-owned Zero Net Energy building in Massachusetts (Health Professions and Student Services Building) — a real, large, already-completed construction project"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via official Mass.gov Leading by Example award record"
+      }
+    },
+    "flagNote": "Holds a genuine state first — the first-ever state-owned Zero Net Energy building — showing an institutional willingness to build ambitiously for compliance, even if the flagship project itself is now over a decade old.",
+    "details": {
+      "financial": {
+        "text": "Opened the first state-owned Zero Net Energy Building in Massachusetts: the Health Professions and Student Services Building, featuring a 345 kW solar PV system, greywater storage, and a geothermal ground-source heat pump system. Also installed 139 kW of additional solar capacity across its Danvers and Lynn campuses.",
+        "source": "Mass.gov, 2012 Leading by Example Award Winners",
+        "asOf": "~2012"
+      }
+    }
+  },
+  {
+    "id": "scsu",
+    "name": "Southern Connecticut State University",
+    "type": "Public",
+    "state": "CT",
+    "location": "New Haven, CT",
+    "degrees": "Bachelor's–Doctoral",
+    "subscores": {
+      "mandateStrength": {
+        "score": 26,
+        "note": "Charter Second Nature signatory with its own Climate Action Plan; also a CT public university under Gov. Lamont's Executive Order 21-3 (45% emissions cut by 2030, 80% by 2050)"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 18,
+        "note": "Part of a confirmed 2.32 MW solar project (shared with Gateway Community College) with $6M in projected 20-year savings"
+      },
+      "confirmation": {
+        "score": 14,
+        "note": "Confirmed via GovTech reporting and SCSU's own published Climate Action Plan"
+      }
+    },
+    "flagNote": "Connecticut's first real anti-prestige find — a charter climate-pledge signatory with an actual funded, dollar-figure solar project, not just an aspirational plan.",
+    "details": {
+      "financial": {
+        "text": "Part of a 2.32 megawatt solar project (with Gateway Community College) estimated to save $6 million over 20 years. SCSU is a charter signatory of the Climate Leadership Commitment and maintains its own Climate Action Plan targeting net carbon neutrality by 2050 at the latest.",
+        "source": "GovTech; Southern Connecticut State University Climate Action Plan",
+        "asOf": "Jun 2025 (solar project); ongoing (Climate Action Plan)"
+      }
+    }
+  },
+  {
+    "id": "manchestercc",
+    "name": "Manchester Community College",
+    "type": "Public",
+    "state": "CT",
+    "location": "Manchester, CT",
+    "degrees": "Associate's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 24,
+        "note": "Part of Connecticut State Colleges and Universities (CSCU), which has made system-wide carbon neutrality commitments; CT is also under a legal 2030/2040/2050 decarbonization mandate"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 20,
+        "note": "Confirmed solar installation funded by CT Green Bank, part of a CSCU-wide deal projected to save more than $10M over 20 years; construction beginning"
+      },
+      "confirmation": {
+        "score": 14,
+        "note": "Confirmed via Hartford Business Journal reporting naming the school directly"
+      }
+    },
+    "flagNote": "One of three CSCU schools receiving new solar systems this pass, with two more (CCSU, Western CT State) explicitly slated to follow within two years — a visible near-term pipeline, not a one-off.",
+    "details": {
+      "financial": {
+        "text": "Selected, alongside Southern Connecticut State University and Middlesex Community College, to receive new solar energy systems through a CSCU partnership with Current (GE), SunLight Solar Energy, and CT Green Bank; construction began fall 2025. The initiative is projected to save CSCU more than $10 million within 20 years, with Central CT State, Western CT State, and others slated to follow.",
+        "source": "Hartford Business Journal",
+        "asOf": "May 2025 (published); construction began fall 2025"
+      }
+    }
+  },
+  {
+    "id": "ricollege",
+    "name": "Rhode Island College",
+    "type": "Public",
+    "state": "RI",
+    "location": "Providence, RI",
+    "degrees": "Bachelor's–Master's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 28,
+        "note": "State-owned facility under RI's legally binding 2021 Act on Climate (45% emissions reduction below 1990 levels by 2030)"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 24,
+        "note": "Confirmed $14M, two-year, 41-building infrastructure upgrade — one of the largest specific dollar figures found in this list"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via the Rhode Island Office of Energy Resources' own published case study"
+      }
+    },
+    "flagNote": "The strongest Rhode Island find — a real, large, multi-building capital project already underway, directly tied to the state's legally binding climate law.",
+    "details": {
+      "financial": {
+        "text": "Completed the first phase of a two-year, $14 million project to upgrade 41 buildings and campus infrastructure, expected to save more than $1.6 million annually in energy costs for the next 15 years.",
+        "source": "Rhode Island Office of Energy Resources, \"Lead by Example\" case study",
+        "asOf": "Reported ~2024"
+      }
+    }
+  },
+  {
+    "id": "vtc",
+    "name": "Vermont Technical College (Vermont State University)",
+    "type": "Public",
+    "state": "VT",
+    "location": "Randolph Center, VT",
+    "degrees": "Associate's–Bachelor's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 26,
+        "note": "Part of the Vermont State Colleges System, a Vermont Clean and Resilient Energy Consortium member; VT's 2020 Global Warming Solutions Act sets legally binding emissions targets"
+      },
+      "deadlineProximity": {
+        "score": 16,
+        "note": "2030 interim target (26% below 2005 levels by 2025, 40% below 1990 by 2030)"
+      },
+      "fundingAttached": {
+        "score": 14,
+        "note": "A named, completed 100-solar-tracker farm producing ~1M kWh/year, plus an on-campus anaerobic digester (\"Big Bertha\") converting farm waste to renewable electricity and heat — real infrastructure, though the project itself dates to 2020"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via Vermont Tech's own announcement and Solar Power World trade coverage"
+      }
+    },
+    "flagNote": "Vermont's clearest higher-ed decarbonization example — a real, named renewable energy installation doubling as a teaching lab, at a small technical college most outsiders wouldn't think to check.",
+    "details": {
+      "financial": {
+        "text": "Operates a 100-unit AllEarth Renewables solar tracker array (in operation since Feb 2020) projected to produce nearly 1 million kWh annually, plus an anaerobic digester (\"Big Bertha\") converting farm manure and food waste into renewable electricity and heat for the college.",
+        "source": "Vermont Technical College announcement; Solar Power World",
+        "asOf": "Feb 2020"
+      }
+    }
+  },
+  {
+    "id": "usm",
+    "name": "University of Southern Maine",
+    "type": "Public",
+    "state": "ME",
+    "location": "Portland/Gorham, ME",
+    "degrees": "Bachelor's–Doctoral",
+    "subscores": {
+      "mandateStrength": {
+        "score": 26,
+        "note": "Part of the University of Maine System; Maine's 2019 climate law sets a legally binding 45% emissions cut below 1990 levels by 2030"
+      },
+      "deadlineProximity": { "score": 18, "note": "2030 interim target" },
+      "fundingAttached": {
+        "score": 16,
+        "note": "Three existing campus solar systems, geothermal heat pumps on two buildings, and a new residence hall on track to be the 2nd-largest Passive House-certified university building in the US — real, specific, but no single new dollar figure disclosed"
+      },
+      "confirmation": {
+        "score": 14,
+        "note": "Confirmed via USM's own official sustainability page"
+      }
+    },
+    "flagNote": "Maine's strongest non-flagship find — a specific, named Passive House residence hall project, not just a general pledge.",
+    "details": {
+      "financial": {
+        "text": "Operates three solar systems across its Gorham and Portland campuses; the Abromson and Wishcamper buildings are heated and cooled by geothermal heat pumps. A new Portland residence hall is on track to become the second-largest Passive House-certified university building in the United States.",
+        "source": "University of Southern Maine, official sustainability page",
+        "asOf": "Current as published"
+      }
+    }
+  },
+  {
+    "id": "plymouthstate",
+    "name": "Plymouth State University",
+    "type": "Public",
+    "state": "NH",
+    "location": "Plymouth, NH",
+    "degrees": "Bachelor's–Master's",
+    "subscores": {
+      "mandateStrength": {
+        "score": 12,
+        "note": "New Hampshire has no legally binding state climate mandate (unlike the other five New England states) — PSU's push is a voluntary 2009 institutional pledge (ACUPCC), not law. Scored much lower than other schools on this list for that reason"
+      },
+      "deadlineProximity": {
+        "score": 14,
+        "note": "Self-set goal: carbon-neutral electricity by 2030"
+      },
+      "fundingAttached": {
+        "score": 10,
+        "note": "A named, real solar array (PE Center) exists, but no disclosed dollar figure and no legal deadline forcing action"
+      },
+      "confirmation": {
+        "score": 12,
+        "note": "Confirmed via Green Energy Times reporting and PSU's own sustainability office statements"
+      }
+    },
+    "flagNote": "Included for genuine New England-wide coverage, but honestly the weakest mandate case on this list — New Hampshire has no binding state climate law, so this is a voluntary institutional commitment, not a legal pressure point. Worth keeping visible, but with appropriately tempered expectations.",
+    "details": {
+      "financial": {
+        "text": "Installed a solar array at its Physical Education Center as part of a Climate Action Plan (2010) targeting 50% emissions reduction by 2025 and full carbon neutrality by 2050, with a nearer-term goal of carbon-neutral electricity by 2030. PSU was a charter signatory of the American College & University Presidents' Climate Commitment in 2009.",
+        "source": "Green Energy Times; Plymouth State University Office of Environmental Sustainability",
+        "asOf": "Article: 2021; ongoing commitment"
+      }
+    }
+  }
+]

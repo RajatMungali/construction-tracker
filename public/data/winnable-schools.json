@@ -1,0 +1,36 @@
+[
+  {
+    "id": "wpi",
+    "name": "Worcester Polytechnic Institute",
+    "type": "Private",
+    "state": "MA",
+    "location": "Worcester, MA",
+    "degrees": "Bachelor's–Doctoral",
+    "subscores": {
+      "roleSeniority": {
+        "score": 26,
+        "note": "Associate VP for Facilities and Capital Planning — WPI's chief facilities executive, ~110 staff, $40M+ annual budget"
+      },
+      "windowFit": {
+        "score": 20,
+        "note": "Hired to implement WPI's existing campus master plan from day one — no incumbent strategic-plan lag to wait out, unlike a newly hired president"
+      },
+      "recency": {
+        "score": 22,
+        "note": "Appointed Jan 28, 2026 — under a year ago as of this pass"
+      },
+      "confirmation": {
+        "score": 15,
+        "note": "Confirmed via WPI's own official news announcement, not secondhand reporting"
+      }
+    },
+    "flagNote": "Only verified Newly Winnable candidate found this pass — a fresh, senior facilities hire with an existing master plan to execute, at a well-regarded but non-Ivy technical university.",
+    "details": {
+      "financial": {
+        "text": "Sean Hannigan joined WPI as Associate Vice President for Facilities and Capital Planning, reporting to the EVP/CFO. He leads campus planning, facilities operations, design and construction, and sustainability initiatives, overseeing a team of ~110 and a budget of more than $40M, with a stated mandate to implement WPI's comprehensive campus master plan.",
+        "source": "WPI official news announcement",
+        "asOf": "Jan 28, 2026"
+      }
+    }
+  }
+]

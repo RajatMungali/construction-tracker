@@ -1,6 +1,14 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { ChevronDown, Search, Info, AlertTriangle, X } from "lucide-react";
-import { RUBRIC, tierFor, scoreTotal } from "./scoring.js";
+import {
+  RUBRIC,
+  RUBRIC_COMPLIANCE,
+  RUBRIC_WINNABLE,
+  RUBRIC_RECONFIG,
+  tierFor,
+  scoreTotal,
+  reconfigSubscoresFor,
+} from "./scoring.js";
 
 /* ============================================================
    DESIGN TOKENS — light beige / black, tier + category colors
@@ -37,16 +45,79 @@ function tierColorScale(ratio) {
 }
 
 /* ============================================================
+   LIST CONFIG — one entry per top-level category button.
+   getSubscores(school) returns that list's subscores object for
+   a given school. Confirmed Builders and Reconfiguration
+   Candidates both derive from the same schools.json fetch;
+   Compliance Pressure and Newly Winnable read their own
+   datasets (added in Batch 2 — stubbed empty here so this
+   batch doesn't depend on files that don't exist yet).
+   ============================================================ */
+const LIST_CONFIG = [
+  {
+    key: "confirmed",
+    label: "Confirmed Builders",
+    rubric: RUBRIC,
+    getSchools: ({ mainSchools }) => mainSchools,
+    getSubscores: (s) => s.subscores,
+  },
+  {
+    key: "compliance",
+    label: "Compliance Pressure",
+    rubric: RUBRIC_COMPLIANCE,
+    getSchools: ({ complianceSchools }) => complianceSchools,
+    getSubscores: (s) => s.subscores,
+  },
+  {
+    key: "winnable",
+    label: "Newly Winnable",
+    rubric: RUBRIC_WINNABLE,
+    getSchools: ({ winnableSchools }) => winnableSchools,
+    getSubscores: (s) => s.subscores,
+  },
+  {
+    key: "reconfig",
+    label: "Reconfiguration Candidates",
+    rubric: RUBRIC_RECONFIG,
+    getSchools: ({ mainSchools }) => mainSchools,
+    getSubscores: (s) => reconfigSubscoresFor(s),
+  },
+];
+
+/* ============================================================
    SUB-COMPONENTS
    ============================================================ */
 function ScoreBar({ score, max, color }) {
   const pct = Math.round((score / max) * 100);
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-      <div style={{ flex: 1, height: 6, background: C.line, borderRadius: 3, overflow: "hidden" }}>
-        <div style={{ width: `${pct}%`, height: "100%", background: color, borderRadius: 3 }} />
+      <div
+        style={{
+          flex: 1,
+          height: 6,
+          background: C.line,
+          borderRadius: 3,
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: `${pct}%`,
+            height: "100%",
+            background: color,
+            borderRadius: 3,
+          }}
+        />
       </div>
-      <span style={{ ...display, fontSize: 12, color: C.textSecondary, minWidth: 42, textAlign: "right" }}>
+      <span
+        style={{
+          ...display,
+          fontSize: 12,
+          color: C.textSecondary,
+          minWidth: 42,
+          textAlign: "right",
+        }}
+      >
         {score}/{max}
       </span>
     </div>
@@ -75,10 +146,31 @@ function TierBadge({ tier }) {
 }
 
 function SourceLine({ label, d }) {
+  if (!d) return null;
   return (
     <div style={{ marginBottom: 18 }}>
-      <div style={{ ...body, fontSize: 13, fontWeight: 500, color: C.textPrimary, marginBottom: 4 }}>{label}</div>
-      <p style={{ ...body, fontSize: 13.5, lineHeight: 1.6, color: C.textSecondary, margin: "0 0 6px" }}>{d.text}</p>
+      <div
+        style={{
+          ...body,
+          fontSize: 13,
+          fontWeight: 500,
+          color: C.textPrimary,
+          marginBottom: 4,
+        }}
+      >
+        {label}
+      </div>
+      <p
+        style={{
+          ...body,
+          fontSize: 13.5,
+          lineHeight: 1.6,
+          color: C.textSecondary,
+          margin: "0 0 6px",
+        }}
+      >
+        {d.text}
+      </p>
       <div style={{ ...display, fontSize: 11, color: C.textMuted }}>
         {d.source}
         {d.asOf !== "—" ? ` · as of ${d.asOf}` : ""}
@@ -87,30 +179,112 @@ function SourceLine({ label, d }) {
   );
 }
 
-function Methodology({ onClose }) {
+function Methodology({ rubric, onClose }) {
   return (
-    <div style={{ background: C.bgPanel, border: `1px solid ${C.lineStrong}`, borderRadius: 8, padding: 20, marginBottom: 20 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
-        <div style={{ ...display, fontSize: 15, fontWeight: 500, color: C.textPrimary }}>Scoring methodology</div>
-        <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: C.textMuted }}>
+    <div
+      style={{
+        background: C.bgPanel,
+        border: `1px solid ${C.lineStrong}`,
+        borderRadius: 8,
+        padding: 20,
+        marginBottom: 20,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: 14,
+        }}
+      >
+        <div
+          style={{
+            ...display,
+            fontSize: 15,
+            fontWeight: 500,
+            color: C.textPrimary,
+          }}
+        >
+          Scoring methodology
+        </div>
+        <button
+          onClick={onClose}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: C.textMuted,
+          }}
+        >
           <X size={16} />
         </button>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, marginBottom: 16 }}>
-        {RUBRIC.map((r) => (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 14,
+          marginBottom: 16,
+        }}
+      >
+        {rubric.map((r) => (
           <div key={r.key}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
-              <span style={{ width: 8, height: 8, borderRadius: 2, background: r.color, display: "inline-block" }} />
-              <span style={{ ...display, fontSize: 12, color: C.textPrimary, fontWeight: 500 }}>{r.max} pts</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                marginBottom: 3,
+              }}
+            >
+              <span
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: 2,
+                  background: r.color,
+                  display: "inline-block",
+                }}
+              />
+              <span
+                style={{
+                  ...display,
+                  fontSize: 12,
+                  color: C.textPrimary,
+                  fontWeight: 500,
+                }}
+              >
+                {r.max} pts
+              </span>
             </div>
-            <div style={{ ...body, fontSize: 13, color: C.textSecondary, lineHeight: 1.5 }}>{r.label}</div>
+            <div
+              style={{
+                ...body,
+                fontSize: 13,
+                color: C.textSecondary,
+                lineHeight: 1.5,
+              }}
+            >
+              {r.label}
+            </div>
           </div>
         ))}
       </div>
-      <div style={{ ...body, fontSize: 12.5, color: C.textMuted, lineHeight: 1.6, borderTop: `1px solid ${C.line}`, paddingTop: 14 }}>
-        Total is out of 100. Tiers: 80+ top pick, 60–79 strong, 40–59 moderate, 20–39 caution, under 20 quiet. A missing
-        data point scores as the low end of its range rather than being guessed — a gap is not the same as a zero
-        finding, and both are shown as such in each school's breakdown.
+      <div
+        style={{
+          ...body,
+          fontSize: 12.5,
+          color: C.textMuted,
+          lineHeight: 1.6,
+          borderTop: `1px solid ${C.line}`,
+          paddingTop: 14,
+        }}
+      >
+        Total is out of 100. Tiers: 80+ top pick, 60–79 strong, 40–59 moderate,
+        20–39 caution, under 20 quiet. A missing data point scores as the low
+        end of its range rather than being guessed — a gap is not the same as a
+        zero finding, and both are shown as such in each school's breakdown.
       </div>
     </div>
   );
@@ -120,12 +294,15 @@ function Methodology({ onClose }) {
    MAIN
    ============================================================ */
 export default function App() {
-  const [schools, setSchools] = useState(null);
+  const [mainSchools, setMainSchools] = useState(null);
+  const [complianceSchools, setComplianceSchools] = useState([]);
+  const [winnableSchools, setWinnableSchools] = useState([]);
   const [loadError, setLoadError] = useState(null);
   const [query, setQuery] = useState("");
   const [tierFilter, setTierFilter] = useState("All");
   const [expanded, setExpanded] = useState(null);
   const [showMethod, setShowMethod] = useState(false);
+  const [activeListKey, setActiveListKey] = useState(LIST_CONFIG[0].key);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/schools.json`)
@@ -133,16 +310,48 @@ export default function App() {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
-      .then(setSchools)
+      .then(setMainSchools)
       .catch((e) => setLoadError(e.message));
+
+    // Compliance Pressure / Newly Winnable datasets land in Batch 2.
+    // Fetched the same way, but a missing file is not treated as an
+    // app-breaking error — it just leaves that list empty for now.
+    fetch(`${import.meta.env.BASE_URL}data/compliance-schools.json`)
+      .then((r) => (r.ok ? r.json() : []))
+      .then(setComplianceSchools)
+      .catch(() => setComplianceSchools([]));
+
+    fetch(`${import.meta.env.BASE_URL}data/winnable-schools.json`)
+      .then((r) => (r.ok ? r.json() : []))
+      .then(setWinnableSchools)
+      .catch(() => setWinnableSchools([]));
   }, []);
 
-  const withTotals = useMemo(
-    () => (schools || []).map((s) => ({ ...s, total: scoreTotal(s.subscores), tier: tierFor(scoreTotal(s.subscores)) })),
-    [schools]
-  );
+  const activeList = LIST_CONFIG.find((l) => l.key === activeListKey);
 
-  const tierOptions = ["All", "Top pick", "Strong", "Moderate", "Caution", "Quiet"];
+  const rawSchools =
+    activeList.getSchools({
+      mainSchools: mainSchools || [],
+      complianceSchools,
+      winnableSchools,
+    }) || [];
+
+  const withTotals = useMemo(() => {
+    return rawSchools.map((s) => {
+      const subscores = activeList.getSubscores(s);
+      const total = scoreTotal(subscores, activeList.rubric);
+      return { ...s, subscores, total, tier: tierFor(total) };
+    });
+  }, [rawSchools, activeList]);
+
+  const tierOptions = [
+    "All",
+    "Top pick",
+    "Strong",
+    "Moderate",
+    "Caution",
+    "Quiet",
+  ];
 
   const list = useMemo(() => {
     let l = withTotals.filter(
@@ -150,13 +359,23 @@ export default function App() {
         (tierFilter === "All" || s.tier === tierFilter) &&
         (query === "" ||
           s.name.toLowerCase().includes(query.toLowerCase()) ||
-          s.state.toLowerCase().includes(query.toLowerCase()))
+          s.state.toLowerCase().includes(query.toLowerCase())),
     );
     return l.sort((a, b) => b.total - a.total);
   }, [query, tierFilter, withTotals]);
 
+  const dataStillLoading = mainSchools === null;
+
   return (
-    <div style={{ ...body, background: C.bgPage, minHeight: "100vh", color: C.textPrimary, padding: "32px 20px 60px" }}>
+    <div
+      style={{
+        ...body,
+        background: C.bgPage,
+        minHeight: "100vh",
+        color: C.textPrimary,
+        padding: "32px 20px 60px",
+      }}
+    >
       <div style={{ maxWidth: 920, margin: "0 auto" }}>
         {/* Title block */}
         <div
@@ -174,22 +393,89 @@ export default function App() {
           }}
         >
           <div>
-            <div style={{ ...display, fontSize: 11, color: C.textMuted, letterSpacing: 1, marginBottom: 6 }}>
+            <div
+              style={{
+                ...display,
+                fontSize: 11,
+                color: C.textMuted,
+                letterSpacing: 1,
+                marginBottom: 6,
+              }}
+            >
               CAPITAL PROJECT INTELLIGENCE — NEW ENGLAND
             </div>
-            <div style={{ ...display, fontSize: 21, fontWeight: 500 }}>Construction opportunity tracker</div>
+            <div style={{ ...display, fontSize: 21, fontWeight: 500 }}>
+              Construction opportunity tracker
+            </div>
           </div>
-          <div style={{ ...display, fontSize: 12, color: C.textMuted, textAlign: "right" }}>
+          <div
+            style={{
+              ...display,
+              fontSize: 12,
+              color: C.textMuted,
+              textAlign: "right",
+            }}
+          >
             POC · 10 of ~300 schools
             <br />
             Sheet rev. Sept 2026
           </div>
         </div>
 
+        {/* Category button row */}
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            flexWrap: "wrap",
+            marginBottom: 16,
+          }}
+        >
+          {LIST_CONFIG.map((l) => (
+            <button
+              key={l.key}
+              onClick={() => {
+                setActiveListKey(l.key);
+                setExpanded(null);
+              }}
+              style={{
+                ...display,
+                fontSize: 13,
+                fontWeight: 500,
+                padding: "10px 16px",
+                borderRadius: 8,
+                border: `1px solid ${activeListKey === l.key ? C.accent : C.line}`,
+                background: activeListKey === l.key ? "#E5DEC8" : C.bgCard,
+                color:
+                  activeListKey === l.key ? C.textPrimary : C.textSecondary,
+                cursor: "pointer",
+              }}
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+
         {/* Toolbar */}
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 16, alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            flexWrap: "wrap",
+            marginBottom: 16,
+            alignItems: "center",
+          }}
+        >
           <div style={{ position: "relative", flex: "1 1 220px" }}>
-            <Search size={15} style={{ position: "absolute", left: 10, top: 10, color: C.textMuted }} />
+            <Search
+              size={15}
+              style={{
+                position: "absolute",
+                left: 10,
+                top: 10,
+                color: C.textMuted,
+              }}
+            />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -245,16 +531,59 @@ export default function App() {
           </button>
         </div>
 
-        {showMethod && <Methodology onClose={() => setShowMethod(false)} />}
+        {showMethod && (
+          <Methodology
+            rubric={activeList.rubric}
+            onClose={() => setShowMethod(false)}
+          />
+        )}
 
         {loadError && (
-          <div style={{ ...body, fontSize: 13, color: C.tiers.Caution.fg, background: C.tiers.Caution.bg, border: `1px solid ${C.tiers.Caution.border}`, borderRadius: 8, padding: 14, marginBottom: 16 }}>
-            Couldn't load school data ({loadError}). Check that public/data/schools.json exists and is valid JSON.
+          <div
+            style={{
+              ...body,
+              fontSize: 13,
+              color: C.tiers.Caution.fg,
+              background: C.tiers.Caution.bg,
+              border: `1px solid ${C.tiers.Caution.border}`,
+              borderRadius: 8,
+              padding: 14,
+              marginBottom: 16,
+            }}
+          >
+            Couldn't load school data ({loadError}). Check that
+            public/data/schools.json exists and is valid JSON.
           </div>
         )}
-        {!schools && !loadError && (
-          <div style={{ ...body, fontSize: 13, color: C.textMuted, padding: 24, textAlign: "center" }}>Loading schools…</div>
+        {dataStillLoading && !loadError && (
+          <div
+            style={{
+              ...body,
+              fontSize: 13,
+              color: C.textMuted,
+              padding: 24,
+              textAlign: "center",
+            }}
+          >
+            Loading schools…
+          </div>
         )}
+        {!dataStillLoading &&
+          !loadError &&
+          list.length === 0 &&
+          rawSchools.length === 0 && (
+            <div
+              style={{
+                ...body,
+                fontSize: 13,
+                color: C.textMuted,
+                padding: 24,
+                textAlign: "center",
+              }}
+            >
+              No schools researched for this category yet.
+            </div>
+          )}
 
         {/* Ranked list */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -281,11 +610,24 @@ export default function App() {
                     cursor: "pointer",
                   }}
                 >
-                  <div style={{ ...display, fontSize: 13, color: C.textMuted }}>{String(i + 1).padStart(2, "0")}</div>
+                  <div style={{ ...display, fontSize: 13, color: C.textMuted }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
 
                   <div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                      <span style={{ ...display, fontSize: 14.5, fontWeight: 500 }}>{s.name}</span>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <span
+                        style={{ ...display, fontSize: 14.5, fontWeight: 500 }}
+                      >
+                        {s.name}
+                      </span>
                       {s.distressFlag && (
                         <span
                           style={{
@@ -305,70 +647,168 @@ export default function App() {
                         </span>
                       )}
                     </div>
-                    <div style={{ ...display, fontSize: 11.5, color: C.textMuted, marginTop: 2 }}>
+                    <div
+                      style={{
+                        ...display,
+                        fontSize: 11.5,
+                        color: C.textMuted,
+                        marginTop: 2,
+                      }}
+                    >
                       {s.type} · {s.location}
                     </div>
                   </div>
 
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 10 }}
+                  >
                     <span style={{ ...display, fontSize: 16, fontWeight: 500 }}>
                       {s.total}
-                      <span style={{ color: C.textMuted, fontSize: 11 }}> /100</span>
+                      <span style={{ color: C.textMuted, fontSize: 11 }}>
+                        {" "}
+                        /100
+                      </span>
                     </span>
                   </div>
 
                   <ChevronDown
                     size={16}
-                    style={{ color: C.textMuted, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}
+                    style={{
+                      color: C.textMuted,
+                      transform: isOpen ? "rotate(180deg)" : "none",
+                      transition: "transform 0.15s",
+                    }}
                   />
                 </div>
 
                 {!isOpen && (
-                  <div style={{ padding: "0 16px 14px", display: "flex", justifyContent: "flex-end" }}>
+                  <div
+                    style={{
+                      padding: "0 16px 14px",
+                      display: "flex",
+                      justifyContent: "flex-end",
+                    }}
+                  >
                     <TierBadge tier={s.tier} />
                   </div>
                 )}
 
                 {isOpen && (
-                  <div style={{ padding: "4px 16px 20px", borderTop: `1px solid ${C.line}` }}>
-                    <div style={{ display: "flex", justifyContent: "flex-end", margin: "14px 0 4px" }}>
+                  <div
+                    style={{
+                      padding: "4px 16px 20px",
+                      borderTop: `1px solid ${C.line}`,
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        margin: "14px 0 4px",
+                      }}
+                    >
                       <TierBadge tier={s.tier} />
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, margin: "12px 0 20px" }}>
-                      {RUBRIC.map((r) => {
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns:
+                          "repeat(auto-fit, minmax(220px, 1fr))",
+                        gap: 14,
+                        margin: "12px 0 20px",
+                      }}
+                    >
+                      {activeList.rubric.map((r) => {
                         const sub = s.subscores[r.key];
                         return (
                           <div key={r.key}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
-                              <span style={{ width: 8, height: 8, borderRadius: 2, background: r.color, display: "inline-block" }} />
-                              <span style={{ ...body, fontSize: 12.5, color: C.textSecondary }}>{r.label}</span>
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 6,
+                                marginBottom: 6,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  width: 8,
+                                  height: 8,
+                                  borderRadius: 2,
+                                  background: r.color,
+                                  display: "inline-block",
+                                }}
+                              />
+                              <span
+                                style={{
+                                  ...body,
+                                  fontSize: 12.5,
+                                  color: C.textSecondary,
+                                }}
+                              >
+                                {r.label}
+                              </span>
                             </div>
-                            <ScoreBar score={sub.score} max={r.max} color={tierColorScale(sub.score / r.max)} />
-                            <div style={{ ...body, fontSize: 12, color: C.textMuted, marginTop: 5, lineHeight: 1.5 }}>{sub.note}</div>
+                            <ScoreBar
+                              score={sub.score}
+                              max={r.max}
+                              color={tierColorScale(sub.score / r.max)}
+                            />
+                            <div
+                              style={{
+                                ...body,
+                                fontSize: 12,
+                                color: C.textMuted,
+                                marginTop: 5,
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              {sub.note}
+                            </div>
                           </div>
                         );
                       })}
                     </div>
 
-                    <div style={{ ...body, fontSize: 13, color: C.textPrimary, lineHeight: 1.6, marginBottom: 18, fontStyle: "italic" }}>
+                    <div
+                      style={{
+                        ...body,
+                        fontSize: 13,
+                        color: C.textPrimary,
+                        lineHeight: 1.6,
+                        marginBottom: 18,
+                        fontStyle: "italic",
+                      }}
+                    >
                       {s.flagNote}
                     </div>
 
-                    <div style={{ borderTop: `1px solid ${C.line}`, paddingTop: 16 }}>
-                      <SourceLine label="Admissions & enrollment" d={s.details.admissions} />
-                      <SourceLine label="Financial health & construction trigger" d={s.details.financial} />
-                      <SourceLine label="Waitlist & housing pressure" d={s.details.housing} />
-                    </div>
+                    {s.details && (
+                      <div
+                        style={{
+                          borderTop: `1px solid ${C.line}`,
+                          paddingTop: 16,
+                        }}
+                      >
+                        <SourceLine
+                          label="Admissions & enrollment"
+                          d={s.details.admissions}
+                        />
+                        <SourceLine
+                          label="Financial health & construction trigger"
+                          d={s.details.financial}
+                        />
+                        <SourceLine
+                          label="Waitlist & housing pressure"
+                          d={s.details.housing}
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             );
           })}
-          {list.length === 0 && (
-            <div style={{ ...body, color: C.textMuted, fontSize: 13, padding: 24, textAlign: "center" }}>
-              No schools match this filter.
-            </div>
-          )}
         </div>
       </div>
     </div>
