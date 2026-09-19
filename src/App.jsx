@@ -11,9 +11,7 @@ import {
 } from "./scoring.js";
 
 /* ============================================================
-   DESIGN TOKENS — light beige / black, tier + category colors
-   carry the readability signal so scores are scannable at a
-   glance without relying on position alone.
+   DESIGN TOKENS — unchanged from the previous version.
    ============================================================ */
 const C = {
   bgPage: "#EFE9DA",
@@ -45,39 +43,45 @@ function tierColorScale(ratio) {
 }
 
 /* ============================================================
-   LIST CONFIG — one entry per top-level category button.
-   getSubscores(school) returns that list's subscores object for
-   a given school. Confirmed Builders and Reconfiguration
-   Candidates both derive from the same schools.json fetch;
-   Compliance Pressure and Newly Winnable read their own
-   datasets (added in Batch 2 — stubbed empty here so this
-   batch doesn't depend on files that don't exist yet).
+   LIST CONFIG — renamed per Shikshita's feedback so each label
+   is self-explanatory without needing outside context, and each
+   entry now carries a short "description" shown under the tab
+   row when that category is selected, explaining in plain terms
+   what the list captures and why a school ends up on it.
    ============================================================ */
 const LIST_CONFIG = [
   {
     key: "confirmed",
-    label: "Confirmed Builders",
+    label: "Financial Health",
+    description:
+      "Ranks schools by capacity to build right now — bond activity, credit standing, enrollment demand, and waitlist or housing pressure. A school lands here because it already has both the money and the demand to fund construction.",
     rubric: RUBRIC,
     getSchools: ({ mainSchools }) => mainSchools,
     getSubscores: (s) => s.subscores,
   },
   {
     key: "compliance",
-    label: "Compliance Pressure",
+    label: "Regulatory Compliance",
+    description:
+      "Surfaces schools facing legal decarbonization deadlines — state net-zero mandates, city ordinances like Boston's BERDO, or binding climate pledges. A school lands here because it has to act, regardless of how wealthy it is.",
     rubric: RUBRIC_COMPLIANCE,
     getSchools: ({ complianceSchools }) => complianceSchools,
     getSubscores: (s) => s.subscores,
   },
   {
     key: "winnable",
-    label: "Newly Winnable",
+    label: "New Leadership",
+    description:
+      "Flags schools that just hired a new facilities or capital-planning leader with no built-in loyalty to an incumbent architecture firm. A school lands here because the relationship is still up for grabs.",
     rubric: RUBRIC_WINNABLE,
     getSchools: ({ winnableSchools }) => winnableSchools,
     getSubscores: (s) => s.subscores,
   },
   {
     key: "reconfig",
-    label: "Reconfiguration Candidates",
+    label: "Underused Space",
+    description:
+      "Reads declining enrollment as an opportunity rather than a warning sign — surplus dorms and underused buildings mean conversion and renovation work. A school lands here because it has more space than students.",
     rubric: RUBRIC_RECONFIG,
     getSchools: ({ mainSchools }) => mainSchools,
     getSubscores: (s) => reconfigSubscoresFor(s),
@@ -301,6 +305,10 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [tierFilter, setTierFilter] = useState("All");
   const [expanded, setExpanded] = useState(null);
+  // Tracks which school's full sourced write-up is expanded — separate
+  // from `expanded` so opening a school always starts with the short
+  // summary + scores, and the detailed sourcing is an explicit second step.
+  const [sourcesOpenId, setSourcesOpenId] = useState(null);
   const [showMethod, setShowMethod] = useState(false);
   const [activeListKey, setActiveListKey] = useState(LIST_CONFIG[0].key);
 
@@ -313,9 +321,6 @@ export default function App() {
       .then(setMainSchools)
       .catch((e) => setLoadError(e.message));
 
-    // Compliance Pressure / Newly Winnable datasets land in Batch 2.
-    // Fetched the same way, but a missing file is not treated as an
-    // app-breaking error — it just leaves that list empty for now.
     fetch(`${import.meta.env.BASE_URL}data/compliance-schools.json`)
       .then((r) => (r.ok ? r.json() : []))
       .then(setComplianceSchools)
@@ -428,7 +433,7 @@ export default function App() {
             display: "flex",
             gap: 8,
             flexWrap: "wrap",
-            marginBottom: 16,
+            marginBottom: 10,
           }}
         >
           {LIST_CONFIG.map((l) => (
@@ -437,6 +442,7 @@ export default function App() {
               onClick={() => {
                 setActiveListKey(l.key);
                 setExpanded(null);
+                setSourcesOpenId(null);
               }}
               style={{
                 ...display,
@@ -454,6 +460,21 @@ export default function App() {
               {l.label}
             </button>
           ))}
+        </div>
+
+        {/* Active list description — shows what this category captures
+            and why a school ends up on it, in plain terms. */}
+        <div
+          style={{
+            ...body,
+            fontSize: 13,
+            lineHeight: 1.5,
+            color: C.textSecondary,
+            marginBottom: 16,
+            padding: "0 2px",
+          }}
+        >
+          {activeList.description}
         </div>
 
         {/* Toolbar */}
@@ -589,6 +610,7 @@ export default function App() {
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {list.map((s, i) => {
             const isOpen = expanded === s.id;
+            const sourcesOpen = sourcesOpenId === s.id;
             return (
               <div
                 key={s.id}
@@ -600,7 +622,10 @@ export default function App() {
                 }}
               >
                 <div
-                  onClick={() => setExpanded(isOpen ? null : s.id)}
+                  onClick={() => {
+                    setExpanded(isOpen ? null : s.id);
+                    if (isOpen) setSourcesOpenId(null);
+                  }}
                   style={{
                     display: "grid",
                     gridTemplateColumns: "36px 1fr 90px 24px",
@@ -709,13 +734,33 @@ export default function App() {
                     >
                       <TierBadge tier={s.tier} />
                     </div>
+
+                    {/* Plain-English summary — moved to the top, ahead of
+                        the score grid, so the reader gets the "so what"
+                        before the breakdown. This is the same flagNote
+                        content as before; only its position/styling
+                        changed (no longer buried below the grid). */}
+                    {s.flagNote && (
+                      <div
+                        style={{
+                          ...body,
+                          fontSize: 14,
+                          color: C.textPrimary,
+                          lineHeight: 1.6,
+                          marginBottom: 16,
+                        }}
+                      >
+                        {s.flagNote}
+                      </div>
+                    )}
+
                     <div
                       style={{
                         display: "grid",
                         gridTemplateColumns:
                           "repeat(auto-fit, minmax(220px, 1fr))",
                         gap: 14,
-                        margin: "12px 0 20px",
+                        margin: "0 0 16px",
                       }}
                     >
                       {activeList.rubric.map((r) => {
@@ -770,38 +815,69 @@ export default function App() {
                       })}
                     </div>
 
-                    <div
-                      style={{
-                        ...body,
-                        fontSize: 13,
-                        color: C.textPrimary,
-                        lineHeight: 1.6,
-                        marginBottom: 18,
-                        fontStyle: "italic",
-                      }}
-                    >
-                      {s.flagNote}
-                    </div>
-
+                    {/* Full sourced write-up is now collapsed behind an
+                        explicit toggle instead of always shown — this is
+                        the "wall of data" simplification Shikshita asked
+                        for. Clicking it stops the row from re-collapsing
+                        (stopPropagation) since it sits inside the same
+                        clickable card as the row header. */}
                     {s.details && (
                       <div
                         style={{
                           borderTop: `1px solid ${C.line}`,
-                          paddingTop: 16,
+                          paddingTop: 12,
                         }}
                       >
-                        <SourceLine
-                          label="Admissions & enrollment"
-                          d={s.details.admissions}
-                        />
-                        <SourceLine
-                          label="Financial health & construction trigger"
-                          d={s.details.financial}
-                        />
-                        <SourceLine
-                          label="Waitlist & housing pressure"
-                          d={s.details.housing}
-                        />
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSourcesOpenId(sourcesOpen ? null : s.id);
+                          }}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 6,
+                            ...display,
+                            fontSize: 11.5,
+                            padding: "6px 10px",
+                            borderRadius: 6,
+                            border: `1px solid ${C.line}`,
+                            background: "transparent",
+                            color: C.textSecondary,
+                            cursor: "pointer",
+                            marginBottom: sourcesOpen ? 16 : 0,
+                          }}
+                        >
+                          <ChevronDown
+                            size={13}
+                            style={{
+                              transform: sourcesOpen
+                                ? "rotate(180deg)"
+                                : "none",
+                              transition: "transform 0.15s",
+                            }}
+                          />
+                          {sourcesOpen
+                            ? "Hide full sourcing"
+                            : "Show full sourcing"}
+                        </button>
+
+                        {sourcesOpen && (
+                          <div>
+                            <SourceLine
+                              label="Admissions & enrollment"
+                              d={s.details.admissions}
+                            />
+                            <SourceLine
+                              label="Financial health & construction trigger"
+                              d={s.details.financial}
+                            />
+                            <SourceLine
+                              label="Waitlist & housing pressure"
+                              d={s.details.housing}
+                            />
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
