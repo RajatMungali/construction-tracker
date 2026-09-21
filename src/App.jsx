@@ -3,16 +3,13 @@ import { ChevronDown, Search, Info, AlertTriangle, X } from "lucide-react";
 import {
   RUBRIC,
   RUBRIC_COMPLIANCE,
-  RUBRIC_WINNABLE,
   RUBRIC_RECONFIG,
   tierFor,
   scoreTotal,
   reconfigSubscoresFor,
 } from "./scoring.js";
 
-/* ============================================================
-   DESIGN TOKENS — unchanged from the previous version.
-   ============================================================ */
+/* Design tokens, unchanged. */
 const C = {
   bgPage: "#EFE9DA",
   bgCard: "#FBF8F1",
@@ -43,48 +40,56 @@ function tierColorScale(ratio) {
 }
 
 /* ============================================================
-   LIST CONFIG — renamed per Shikshita's feedback so each label
-   is self-explanatory without needing outside context, and each
-   entry now carries a short "description" shown under the tab
-   row when that category is selected, explaining in plain terms
-   what the list captures and why a school ends up on it.
+   LIST CONFIG. Newly Winnable removed on purpose, per request,
+   the whole list and its data fetch are gone from this file.
+
+   Each entry also carries detailLabels, so the source section at
+   the bottom of a school's card uses a label that matches THIS
+   list, not a label copied from a different list. This fixes the
+   bug where Compliance Pressure schools showed the Confirmed
+   Builders label "Financial health & construction trigger" under
+   Regulatory data that had nothing to do with construction bonds.
    ============================================================ */
 const LIST_CONFIG = [
   {
     key: "confirmed",
-    label: "Financial Health",
+    label: "Confirmed Builders",
     description:
-      "Ranks schools by capacity to build right now — bond activity, credit standing, enrollment demand, and waitlist or housing pressure. A school lands here because it already has both the money and the demand to fund construction.",
+      "Schools that already have the money and the demand to build now. This looks at bonds, credit, how many students are applying, and how full the dorms are.",
     rubric: RUBRIC,
     getSchools: ({ mainSchools }) => mainSchools,
     getSubscores: (s) => s.subscores,
+    detailLabels: {
+      admissions: "Student demand",
+      financial: "Money and construction",
+      housing: "Waitlist and housing",
+    },
   },
   {
     key: "compliance",
-    label: "Regulatory Compliance",
+    label: "Must build by law",
     description:
-      "Surfaces schools facing legal decarbonization deadlines — state net-zero mandates, city ordinances like Boston's BERDO, or binding climate pledges. A school lands here because it has to act, regardless of how wealthy it is.",
+      "Schools that have to cut emissions by law, whether or not they have money. This looks at state and city climate rules, deadlines, and any funding already tied to the work.",
     rubric: RUBRIC_COMPLIANCE,
     getSchools: ({ complianceSchools }) => complianceSchools,
     getSubscores: (s) => s.subscores,
-  },
-  {
-    key: "winnable",
-    label: "New Leadership",
-    description:
-      "Flags schools that just hired a new facilities or capital-planning leader with no built-in loyalty to an incumbent architecture firm. A school lands here because the relationship is still up for grabs.",
-    rubric: RUBRIC_WINNABLE,
-    getSchools: ({ winnableSchools }) => winnableSchools,
-    getSubscores: (s) => s.subscores,
+    detailLabels: {
+      financial: "The law and the money behind it",
+    },
   },
   {
     key: "reconfig",
-    label: "Underused Space",
+    label: "Declining enrollment",
     description:
-      "Reads declining enrollment as an opportunity rather than a warning sign — surplus dorms and underused buildings mean conversion and renovation work. A school lands here because it has more space than students.",
+      "Schools losing students, which usually means empty dorms and buildings that are not being used well. That is a lead for renovation work, not just a warning sign.",
     rubric: RUBRIC_RECONFIG,
     getSchools: ({ mainSchools }) => mainSchools,
     getSubscores: (s) => reconfigSubscoresFor(s),
+    detailLabels: {
+      admissions: "Enrollment numbers",
+      financial: "Background",
+      housing: "Housing numbers",
+    },
   },
 ];
 
@@ -177,7 +182,7 @@ function SourceLine({ label, d }) {
       </p>
       <div style={{ ...display, fontSize: 11, color: C.textMuted }}>
         {d.source}
-        {d.asOf !== "—" ? ` · as of ${d.asOf}` : ""}
+        {d.asOf !== "—" && d.asOf !== "-" ? `, as of ${d.asOf}` : ""}
       </div>
     </div>
   );
@@ -210,7 +215,7 @@ function Methodology({ rubric, onClose }) {
             color: C.textPrimary,
           }}
         >
-          Scoring methodology
+          How scoring works
         </div>
         <button
           onClick={onClose}
@@ -259,7 +264,7 @@ function Methodology({ rubric, onClose }) {
                   fontWeight: 500,
                 }}
               >
-                {r.max} pts
+                {r.max} points
               </span>
             </div>
             <div
@@ -285,10 +290,11 @@ function Methodology({ rubric, onClose }) {
           paddingTop: 14,
         }}
       >
-        Total is out of 100. Tiers: 80+ top pick, 60–79 strong, 40–59 moderate,
-        20–39 caution, under 20 quiet. A missing data point scores as the low
-        end of its range rather than being guessed — a gap is not the same as a
-        zero finding, and both are shown as such in each school's breakdown.
+        The total is out of 100. 80 or more is a top pick, 60 to 79 is strong,
+        40 to 59 is moderate, 20 to 39 is a caution, and under 20 is quiet. When
+        we could not find a piece of data, we score it low instead of guessing.
+        A gap in the data is shown as a gap, not treated as a good or bad
+        result.
       </div>
     </div>
   );
@@ -300,14 +306,10 @@ function Methodology({ rubric, onClose }) {
 export default function App() {
   const [mainSchools, setMainSchools] = useState(null);
   const [complianceSchools, setComplianceSchools] = useState([]);
-  const [winnableSchools, setWinnableSchools] = useState([]);
   const [loadError, setLoadError] = useState(null);
   const [query, setQuery] = useState("");
   const [tierFilter, setTierFilter] = useState("All");
   const [expanded, setExpanded] = useState(null);
-  // Tracks which school's full sourced write-up is expanded — separate
-  // from `expanded` so opening a school always starts with the short
-  // summary + scores, and the detailed sourcing is an explicit second step.
   const [sourcesOpenId, setSourcesOpenId] = useState(null);
   const [showMethod, setShowMethod] = useState(false);
   const [activeListKey, setActiveListKey] = useState(LIST_CONFIG[0].key);
@@ -325,11 +327,6 @@ export default function App() {
       .then((r) => (r.ok ? r.json() : []))
       .then(setComplianceSchools)
       .catch(() => setComplianceSchools([]));
-
-    fetch(`${import.meta.env.BASE_URL}data/winnable-schools.json`)
-      .then((r) => (r.ok ? r.json() : []))
-      .then(setWinnableSchools)
-      .catch(() => setWinnableSchools([]));
   }, []);
 
   const activeList = LIST_CONFIG.find((l) => l.key === activeListKey);
@@ -338,7 +335,6 @@ export default function App() {
     activeList.getSchools({
       mainSchools: mainSchools || [],
       complianceSchools,
-      winnableSchools,
     }) || [];
 
   const withTotals = useMemo(() => {
@@ -378,63 +374,38 @@ export default function App() {
         background: C.bgPage,
         minHeight: "100vh",
         color: C.textPrimary,
-        padding: "32px 20px 60px",
+        padding: "28px 20px 60px",
       }}
     >
       <div style={{ maxWidth: 920, margin: "0 auto" }}>
-        {/* Title block */}
+        {/* Title block, trimmed: dropped the internal-sounding revision line. */}
         <div
           style={{
             border: `1px solid ${C.lineStrong}`,
             borderRadius: 8,
-            padding: "18px 22px",
-            marginBottom: 20,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            flexWrap: "wrap",
-            gap: 12,
+            padding: "16px 22px",
+            marginBottom: 16,
             background: C.bgCard,
           }}
         >
-          <div>
-            <div
-              style={{
-                ...display,
-                fontSize: 11,
-                color: C.textMuted,
-                letterSpacing: 1,
-                marginBottom: 6,
-              }}
-            >
-              CAPITAL PROJECT INTELLIGENCE — NEW ENGLAND
-            </div>
-            <div style={{ ...display, fontSize: 21, fontWeight: 500 }}>
-              Construction opportunity tracker
-            </div>
-          </div>
           <div
             style={{
               ...display,
               fontSize: 12,
               color: C.textMuted,
-              textAlign: "right",
+              marginBottom: 4,
             }}
           >
-            POC · 10 of ~300 schools
-            <br />
-            Sheet rev. Sept 2026
+            New England colleges and universities
+          </div>
+          <div style={{ ...display, fontSize: 21, fontWeight: 500 }}>
+            Construction opportunity tracker
           </div>
         </div>
 
-        {/* Category button row */}
+        {/* Category buttons */}
         <div
-          style={{
-            display: "flex",
-            gap: 8,
-            flexWrap: "wrap",
-            marginBottom: 10,
-          }}
+          style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}
         >
           {LIST_CONFIG.map((l) => (
             <button
@@ -462,19 +433,19 @@ export default function App() {
           ))}
         </div>
 
-        {/* Active list description — shows what this category captures
-            and why a school ends up on it, in plain terms. */}
+        {/* What this list means, in plain words, plus a live count so
+            the number always matches what is actually shown. */}
         <div
           style={{
             ...body,
             fontSize: 13,
             lineHeight: 1.5,
             color: C.textSecondary,
-            marginBottom: 16,
-            padding: "0 2px",
+            marginBottom: 14,
           }}
         >
-          {activeList.description}
+          {activeList.description} {rawSchools.length} school
+          {rawSchools.length === 1 ? "" : "s"} shown here.
         </div>
 
         {/* Toolbar */}
@@ -483,7 +454,7 @@ export default function App() {
             display: "flex",
             gap: 10,
             flexWrap: "wrap",
-            marginBottom: 16,
+            marginBottom: 14,
             alignItems: "center",
           }}
         >
@@ -572,7 +543,7 @@ export default function App() {
               marginBottom: 16,
             }}
           >
-            Couldn't load school data ({loadError}). Check that
+            Could not load school data ({loadError}). Check that
             public/data/schools.json exists and is valid JSON.
           </div>
         )}
@@ -586,7 +557,7 @@ export default function App() {
               textAlign: "center",
             }}
           >
-            Loading schools…
+            Loading schools...
           </div>
         )}
         {!dataStillLoading &&
@@ -602,7 +573,7 @@ export default function App() {
                 textAlign: "center",
               }}
             >
-              No schools researched for this category yet.
+              No schools in this list yet.
             </div>
           )}
 
@@ -644,7 +615,6 @@ export default function App() {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: 8,
                         flexWrap: "wrap",
                       }}
                     >
@@ -653,23 +623,32 @@ export default function App() {
                       >
                         {s.name}
                       </span>
+                      {/* FIX: a real space character now sits between the
+                          name and the badge, not just a CSS gap. Without
+                          this, the name and badge text run together as
+                          one word ("University of Hartfordfinancial
+                          distress") anywhere the visual gap is not
+                          preserved, like copied text or a screen reader. */}
                       {s.distressFlag && (
-                        <span
-                          style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 4,
-                            ...display,
-                            fontSize: 10,
-                            color: C.tiers.Caution.fg,
-                            border: `1px solid ${C.tiers.Caution.border}`,
-                            background: C.tiers.Caution.bg,
-                            borderRadius: 4,
-                            padding: "1px 6px",
-                          }}
-                        >
-                          <AlertTriangle size={10} /> financial distress
-                        </span>
+                        <>
+                          {" "}
+                          <span
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 4,
+                              ...display,
+                              fontSize: 10,
+                              color: C.tiers.Caution.fg,
+                              border: `1px solid ${C.tiers.Caution.border}`,
+                              background: C.tiers.Caution.bg,
+                              borderRadius: 4,
+                              padding: "1px 6px",
+                            }}
+                          >
+                            <AlertTriangle size={10} /> financial distress
+                          </span>
+                        </>
                       )}
                     </div>
                     <div
@@ -680,7 +659,7 @@ export default function App() {
                         marginTop: 2,
                       }}
                     >
-                      {s.type} · {s.location}
+                      {s.type}, {s.location}
                     </div>
                   </div>
 
@@ -735,11 +714,6 @@ export default function App() {
                       <TierBadge tier={s.tier} />
                     </div>
 
-                    {/* Plain-English summary — moved to the top, ahead of
-                        the score grid, so the reader gets the "so what"
-                        before the breakdown. This is the same flagNote
-                        content as before; only its position/styling
-                        changed (no longer buried below the grid). */}
                     {s.flagNote && (
                       <div
                         style={{
@@ -815,12 +789,6 @@ export default function App() {
                       })}
                     </div>
 
-                    {/* Full sourced write-up is now collapsed behind an
-                        explicit toggle instead of always shown — this is
-                        the "wall of data" simplification Shikshita asked
-                        for. Clicking it stops the row from re-collapsing
-                        (stopPropagation) since it sits inside the same
-                        clickable card as the row header. */}
                     {s.details && (
                       <div
                         style={{
@@ -857,23 +825,21 @@ export default function App() {
                               transition: "transform 0.15s",
                             }}
                           />
-                          {sourcesOpen
-                            ? "Hide full sourcing"
-                            : "Show full sourcing"}
+                          {sourcesOpen ? "Hide sources" : "Show sources"}
                         </button>
 
                         {sourcesOpen && (
                           <div>
                             <SourceLine
-                              label="Admissions & enrollment"
+                              label={activeList.detailLabels.admissions}
                               d={s.details.admissions}
                             />
                             <SourceLine
-                              label="Financial health & construction trigger"
+                              label={activeList.detailLabels.financial}
                               d={s.details.financial}
                             />
                             <SourceLine
-                              label="Waitlist & housing pressure"
+                              label={activeList.detailLabels.housing}
                               d={s.details.housing}
                             />
                           </div>

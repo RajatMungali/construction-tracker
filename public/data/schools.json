@@ -5,41 +5,41 @@
     "type": "Public",
     "state": "CT",
     "location": "Storrs, CT",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 33,
-        "note": "$582M bond closed Mar 2026, largest in the 30-yr UConn 2000 program — funds academic/research facilities"
+        "note": "Borrowed $582 million in March 2026, the largest amount ever borrowed in this program's 30 year history, to pay for academic and research buildings"
       },
       "demand": {
         "score": 18,
-        "note": "~66,300 Fall 2025 applications, record demand"
+        "note": "About 66,300 students applied for Fall 2025, the highest number ever"
       },
       "housing": {
         "score": 20,
-        "note": "2,253 waitlist offered / 979 accepted / 550 admitted; 96% first-year housed"
+        "note": "2,253 students were offered a spot on the waitlist, 979 accepted it, and 550 got in; 96 percent of first year students live on campus"
       },
       "confirmation": {
         "score": 20,
-        "note": "Bond sale confirmed closed, not pending"
+        "note": "The bond sale is already closed, not just planned"
       }
     },
-    "flagNote": "Record application demand plus the largest capital bond in the university's 30-year building program, closed this year.",
+    "flagNote": "Record numbers of students are applying, and the school just closed the largest construction loan in its history.",
     "details": {
       "admissions": {
-        "text": "~66,300 first-year applications for Fall 2025 entering class — record demand. Ranked #32 public university nationally (US News).",
-        "source": "UConn Annual Report on GO Bonds (to bondholders)",
-        "asOf": "Jan 2026"
+        "text": "About 66,300 students applied to enter in Fall 2025, the most ever. UConn ranks 32nd among public universities nationally, according to US News.",
+        "source": "UConn's own report to its bondholders",
+        "asOf": "January 2026"
       },
       "financial": {
-        "text": "$582M bond sale closed Mar 24 2026 — largest in UConn 2000 program history ($434M tax-exempt GO bonds + $148M taxable BANs). Funds academic/research facilities, library investments, infrastructure at Storrs & UConn Health; also refinances 2015/2016 bonds.",
-        "source": "CT Treasurer press release; Hartford Business Journal",
-        "asOf": "Mar 2026"
+        "text": "UConn closed a $582 million bond sale on March 24, 2026, the largest in the 30 year history of its UConn 2000 building program. The money pays for academic and research buildings, library upgrades, and infrastructure at both the Storrs campus and UConn Health, and also refinances older debt from 2015 and 2016.",
+        "source": "Connecticut State Treasurer's office and the Hartford Business Journal",
+        "asOf": "March 2026"
       },
       "housing": {
-        "text": "Waitlist: 2,253 offered, 979 accepted, 550 admitted. Housing: 96% of first-year students / 64% of all undergrads live in college housing.",
-        "source": "UConn official Common Data Set 2023-24 PDF, Sections C1 & F1",
-        "asOf": "2023-24"
+        "text": "2,253 students were offered a waitlist spot, 979 accepted, and 550 were admitted from the waitlist. 96 percent of first year students and 64 percent of all undergraduates live in college housing.",
+        "source": "UConn's own reported enrollment data for 2023 to 2024",
+        "asOf": "2023 to 2024 school year"
       }
     }
   },
@@ -49,41 +49,41 @@
     "type": "Private",
     "state": "MA",
     "location": "Boston, MA",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 34,
-        "note": "$378.5M science complex bond + separate residence-hall groundbreak, both active"
+        "note": "A $378.5 million science building loan and a separate new dorm are both being built at the same time"
       },
       "demand": {
         "score": 12,
-        "note": "Known high selectivity, not independently re-verified this pass"
+        "note": "Known for being hard to get into, but we did not re-check current numbers"
       },
       "housing": {
         "score": 15,
-        "note": "Waitlist not reported; 99% first-year housed"
+        "note": "The school did not report waitlist numbers this year; 99 percent of first year students live on campus"
       },
       "confirmation": {
         "score": 20,
-        "note": "Two concurrent, named, actively funded projects"
+        "note": "Two separate, named, funded projects, both already underway"
       }
     },
-    "flagNote": "Two large, concurrent, actively-funded projects — one academic, one residential — running at the same time.",
+    "flagNote": "Two large construction projects are happening at the same time, one academic building and one dorm.",
     "details": {
       "admissions": {
-        "text": "Enrollment ~15,000 undergrad/grad; historically high selectivity and strong applicant demand (established market position, not independently re-verified this pass).",
-        "source": "Northeastern public profile (not re-verified via Scorecard this pass)",
+        "text": "Around 15,000 undergraduate and graduate students. The school is known for being hard to get into and having strong demand, though we did not independently re-check current figures this time.",
+        "source": "Northeastern's public profile",
         "asOf": "2025"
       },
       "financial": {
-        "text": "$378.5M tax-exempt bond (via MassDevelopment, ~Sept 2025) funding a 340,000 sq ft science & engineering complex in Fenway. Separately broke ground Feb 2026 on a 23-story, 1,200-bed residence hall (P3 with American Campus Communities / Blackstone).",
-        "source": "Worcester Business Journal; Boston Real Estate Times",
-        "asOf": "Sept 2025 / Feb 2026"
+        "text": "Northeastern took out a $378.5 million tax exempt loan through MassDevelopment around September 2025 to build a 340,000 square foot science and engineering building in the Fenway neighborhood. Separately, the school broke ground in February 2026 on a 23 story, 1,200 bed dorm, built with private partners American Campus Communities and Blackstone.",
+        "source": "Worcester Business Journal and Boston Real Estate Times",
+        "asOf": "September 2025 and February 2026"
       },
       "housing": {
-        "text": "Waitlist numbers not reported by the school in this CDS cycle (fields left blank). Housing: 99% of first-year students / 57% of all undergrads live in college housing.",
-        "source": "Northeastern official Common Data Set 2024-25 PDF, Sections C1 & F1",
-        "asOf": "2024-25"
+        "text": "The school left the waitlist fields blank this reporting year. 99 percent of first year students and 57 percent of all undergraduates live in college housing.",
+        "source": "Northeastern's own reported enrollment data for 2024 to 2025",
+        "asOf": "2024 to 2025 school year"
       }
     }
   },
@@ -93,41 +93,41 @@
     "type": "Private",
     "state": "NH",
     "location": "Hanover, NH",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 35,
-        "note": "$450M+ bonds specifically for housing construction, AAA rating"
+        "note": "Borrowed over $450 million just for housing construction, and holds the highest possible credit rating"
       },
       "demand": {
         "score": 18,
-        "note": "5.84% acceptance rate, 28,863 applicants — near-record demand"
+        "note": "Only accepted 5.84 percent of 28,863 applicants, near a record low"
       },
       "housing": {
         "score": 19,
-        "note": "2,497 waitlist offered; 100% first-year / 85% all undergrads housed"
+        "note": "2,497 students offered a waitlist spot; 100 percent of first years and 85 percent of all undergraduates live on campus"
       },
       "confirmation": {
         "score": 20,
-        "note": "Active, confirmed bond issuance for construction"
+        "note": "The construction loan is active and confirmed, not just proposed"
       }
     },
-    "flagNote": "Confirmed live opportunity: active nine-figure bond, record-low admit rate, real waitlist volume.",
+    "flagNote": "Confirmed live opportunity: over $450 million borrowed for construction, a record-low acceptance rate, and real waitlist demand.",
     "details": {
       "admissions": {
-        "text": "Class of 2030: 5.84% acceptance rate, 1,687 admitted from 28,863 applicants. CDS 2025-26 shows 4,715 undergrads, 2,497 offered a waitlist spot (accept count not published).",
-        "source": "AdmissionSight (citing Dartmouth CDS); commondatasets.fyi",
-        "asOf": "CDS cycle 2025-26"
+        "text": "For the class entering in 2026, Dartmouth admitted 1,687 out of 28,863 applicants, a 5.84 percent acceptance rate. The school reports 4,715 undergraduates total, and 2,497 students were offered a waitlist spot this year, though it has not published how many accepted.",
+        "source": "AdmissionSight and commondatasets.fyi, both citing Dartmouth's own reported enrollment data for the 2025 to 2026 school year",
+        "asOf": "2025 to 2026 school year"
       },
       "financial": {
-        "text": "Issuing $450M+ in bonds (2025) for capital projects, incl. housing construction. S&P rating raised to AAA (Apr 2024 article — recheck currency before citing).",
-        "source": "The Dartmouth (student paper); S&P Global Ratings",
-        "asOf": "Aug 2025 / Apr 2024"
+        "text": "Dartmouth borrowed more than $450 million in 2025 for campus construction, including new housing. Its credit rating was raised to AAA, the highest grade a rating agency gives, back in 2024.",
+        "source": "The Dartmouth student newspaper and S&P Global Ratings",
+        "asOf": "Bond issue: August 2025. Credit rating: April 2024"
       },
       "housing": {
-        "text": "Waitlist: 2,497 offered (accepted/admitted not cleanly captured — recheck before citing). Housing: 100% of first-years / 85% of all undergrads / 80% of upperclassmen live in college housing.",
-        "source": "Dartmouth official Common Data Set 2025-26 PDF, Sections C1 & F1",
-        "asOf": "2025-26"
+        "text": "2,497 students were offered a waitlist spot this year, though the school has not published how many accepted or were admitted from it. 100 percent of first year students, 85 percent of all undergraduates, and 80 percent of upperclassmen live in college housing.",
+        "source": "Dartmouth's own reported enrollment data for the 2025 to 2026 school year",
+        "asOf": "2025 to 2026 school year"
       }
     }
   },
@@ -137,41 +137,41 @@
     "type": "Private",
     "state": "CT",
     "location": "Middletown, CT",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 28,
-        "note": "$130M bond-funded science building under construction, opening Fall 2026"
+        "note": "A $130 million loan is paying for a new science building opening in Fall 2026"
       },
       "demand": {
         "score": 8,
-        "note": "Not independently re-verified this pass"
+        "note": "We did not independently check current admissions numbers"
       },
       "housing": {
         "score": 22,
-        "note": "100% first-year / 99% all undergrads housed — near capacity"
+        "note": "100 percent of first years and 99 percent of all undergraduates live on campus, near full capacity"
       },
       "confirmation": {
         "score": 18,
-        "note": "Confirmed under-construction building"
+        "note": "The building is already under construction, confirmed"
       }
     },
-    "flagNote": "Confirms the organic hint in the original brief — real, large, bond-funded construction in progress now.",
+    "flagNote": "A large, loan funded science building is already under construction and set to open in 2026.",
     "details": {
       "admissions": {
-        "text": "Not re-verified this pass — flagged via a public campus review mentioning active science building construction; confirmed true (see financial column).",
-        "source": "Not pulled this pass",
-        "asOf": "—"
+        "text": "We did not independently re-check current admissions numbers this time. This school was flagged because a public campus review mentioned active science building construction, which we then confirmed separately.",
+        "source": "Not independently checked this round",
+        "asOf": "-"
       },
       "financial": {
-        "text": "$255M new science building under construction (opening Fall 2026), $130M bond-funded per Hartford Business Journal. Also mid-construction on a Public Affairs Center renovation and an integrated arts lab.",
-        "source": "Hartford Business Journal; Tradeline Inc.",
-        "asOf": "June–Sept 2025"
+        "text": "A $255 million new science building is under construction and set to open in Fall 2026, with $130 million of it paid for through a loan, according to the Hartford Business Journal. The school is also in the middle of renovating its Public Affairs Center and building an integrated arts lab.",
+        "source": "Hartford Business Journal and Tradeline Inc.",
+        "asOf": "June to September 2025"
       },
       "housing": {
-        "text": "Waitlist: 2,754 offered, 1,557 accepted, 81 admitted. Housing: 100% of first-years / 99% of all undergrads live in college housing. Note: 2022-23 CDS is the most recent publicly findable PDF; a newer year may exist.",
-        "source": "Wesleyan official Common Data Set 2022-23 PDF, Sections C1 & F1",
-        "asOf": "2022-23"
+        "text": "2,754 students were offered a waitlist spot, 1,557 accepted, and 81 were admitted from it. 100 percent of first year students and 99 percent of all undergraduates live in college housing. The 2022 to 2023 school year is the most recent report we could find publicly; a newer one may exist.",
+        "source": "Wesleyan's own reported enrollment data for 2022 to 2023",
+        "asOf": "2022 to 2023 school year"
       }
     }
   },
@@ -181,41 +181,41 @@
     "type": "Private",
     "state": "CT",
     "location": "Hartford, CT",
-    "degrees": "Bachelor's (limited grad)",
+    "degrees": "Bachelor's, with limited graduate programs",
     "subscores": {
       "financial": {
         "score": 22,
-        "note": "$42M + $13M bonds, mostly renovation/refinancing not new build"
+        "note": "$42 million and $13 million in loans, mostly for renovation and refinancing, not new buildings"
       },
       "demand": {
         "score": 17,
-        "note": "Class of 2030 deposits up 25%+ YoY — strongest yield in 5+ years"
+        "note": "Deposits from incoming students are up more than 25 percent from last year, the strongest in five years"
       },
       "housing": {
         "score": 18,
-        "note": "2,468 waitlist offered / 1,387 accepted / 19 admitted; 100%/82% housed"
+        "note": "2,468 students offered a waitlist spot, 1,387 accepted, 19 admitted; 100 percent of first years and 82 percent of all undergraduates live on campus"
       },
       "confirmation": {
         "score": 15,
-        "note": "Bonds approved and issued, capital budget partly bond-funded"
+        "note": "The loans are approved and issued, and part of the school's capital budget"
       }
     },
-    "flagNote": "Bond activity stacked with a real enrollment growth story in the same year.",
+    "flagNote": "Real construction loans landed in the same year as a real jump in incoming student deposits.",
     "details": {
       "admissions": {
-        "text": "Class of 2030 deposits up >25% year-over-year — strongest yield in 5+ years per the college's own release.",
-        "source": "Trinity College news release",
+        "text": "Deposits from the incoming class entering in 2026 are up more than 25 percent from last year, the strongest year for keeping admitted students in more than five years, according to the college's own announcement.",
+        "source": "Trinity College's own news release",
         "asOf": "May 2026"
       },
       "financial": {
-        "text": "CHEFA approved a $42M Series T bond (Dec 2025) — ~$10M for on-campus renovation, rest refinancing. Moody's affirmed A2, stable outlook, Feb 2026. Separate $13M Dec 2025 bond for first-year dorm/HVAC upgrades.",
-        "source": "Hartford Business Journal; Trinity Tripod; Trinity College news",
-        "asOf": "Dec 2025 – May 2026"
+        "text": "Connecticut's higher education finance authority approved a $42 million bond for Trinity in December 2025, with about $10 million going toward campus renovation and the rest refinancing older debt. Moody's confirmed the school's A2 credit rating with a stable outlook in February 2026. A separate $13 million bond from December 2025 is paying for first year dorm renovations and HVAC upgrades.",
+        "source": "Hartford Business Journal, the Trinity Tripod student newspaper, and Trinity College's own news releases",
+        "asOf": "December 2025 to May 2026"
       },
       "housing": {
-        "text": "Waitlist: 2,468 offered, 1,387 accepted, 19 admitted. Housing: 100% of first-years / 82% of all undergrads live in college housing.",
-        "source": "Trinity College official Common Data Set 2025-26 PDF, Sections C1 & F1",
-        "asOf": "2025-26"
+        "text": "2,468 students were offered a waitlist spot, 1,387 accepted, and 19 were admitted from it. 100 percent of first year students and 82 percent of all undergraduates live in college housing.",
+        "source": "Trinity College's own reported enrollment data for 2025 to 2026",
+        "asOf": "2025 to 2026 school year"
       }
     }
   },
@@ -225,41 +225,41 @@
     "type": "Public",
     "state": "MA",
     "location": "Amherst, MA",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 18,
-        "note": "P3 housing deal signed but dollar figure undisclosed; state bond bill still pending"
+        "note": "Signed a housing developer deal but has not disclosed the dollar amount; a separate state loan bill is still pending"
       },
       "demand": {
         "score": 8,
-        "note": "Not independently re-verified this pass"
+        "note": "We did not independently check current admissions numbers"
       },
       "housing": {
         "score": 16,
-        "note": "11,100 waitlist offered / 7,261 accepted / 2,349 admitted; 97%/58% housed"
+        "note": "11,100 students offered a waitlist spot, 7,261 accepted, 2,349 admitted; 97 percent of first years and 58 percent of all undergraduates live on campus"
       },
       "confirmation": {
         "score": 10,
-        "note": "Developer selected, but scope/dollar not yet disclosed and BRIGHT Act unpassed"
+        "note": "A developer is picked, but the project size and dollar amount are not public yet, and the state loan bill has not passed"
       }
     },
-    "flagNote": "Real signed housing deal, tied to a statewide bond bill in progress — but neither has a confirmed dollar figure yet.",
+    "flagNote": "A real housing deal is signed and tied to a statewide construction loan bill in progress, but neither has a confirmed dollar figure yet.",
     "details": {
       "admissions": {
-        "text": "Not re-verified this pass.",
-        "source": "Not pulled this pass",
-        "asOf": "—"
+        "text": "We did not independently re-check current admissions numbers this round.",
+        "source": "Not independently checked this round",
+        "asOf": "-"
       },
       "financial": {
-        "text": "Selected American Campus Communities (Blackstone-owned) as P3 developer for a full campus housing modernization, announced May 2026 — long-range, phased, 10–15 year plan. Separate from the pending state BRIGHT Act ($2.5B+ bond bill; House passed Nov 2025, Senate pending).",
-        "source": "Daily Hampshire Gazette; UMass Amherst news",
+        "text": "UMass Amherst picked American Campus Communities, owned by Blackstone, to run a full campus housing overhaul announced in May 2026. It is a long, phased plan expected to take 10 to 15 years. Separately, Massachusetts is considering the BRIGHT Act, a state construction loan bill worth more than $2.5 billion. The House passed it in November 2025, and it is still waiting on the Senate.",
+        "source": "Daily Hampshire Gazette and UMass Amherst's own news releases",
         "asOf": "May 2026"
       },
       "housing": {
-        "text": "Waitlist: 11,100 offered, 7,261 accepted, 2,349 admitted. Housing: 97% of first-years / 58% of all undergrads live in college housing.",
-        "source": "UMass Amherst official Common Data Set 2025-26 PDF, Sections C1 & F1",
-        "asOf": "2025-26"
+        "text": "11,100 students were offered a waitlist spot, 7,261 accepted, and 2,349 were admitted from it. 97 percent of first year students and 58 percent of all undergraduates live in college housing.",
+        "source": "UMass Amherst's own reported enrollment data for 2025 to 2026",
+        "asOf": "2025 to 2026 school year"
       }
     }
   },
@@ -269,41 +269,41 @@
     "type": "Public",
     "state": "MA",
     "location": "Bridgewater, MA",
-    "degrees": "Bachelor's–Master's",
+    "degrees": "Bachelor's and Master's",
     "subscores": {
       "financial": {
         "score": 15,
-        "note": "Named in a pending state bond bill; no confirmed BSU-specific new project"
+        "note": "Named in a pending state loan bill, but no project specific to this school is confirmed yet"
       },
       "demand": {
         "score": 8,
-        "note": "Growth cited as a revenue driver, figures not pulled this pass"
+        "note": "The school's own report says enrollment is growing, but we did not independently check the exact numbers"
       },
       "housing": {
         "score": 5,
-        "note": "No waitlist policy; only 36%/17% live in college housing — low pressure"
+        "note": "The school does not run a waitlist; only 36 percent of first years and 17 percent of all undergraduates live on campus, showing low pressure"
       },
       "confirmation": {
         "score": 6,
-        "note": "Bond bill has passed the House only, not yet law"
+        "note": "The loan bill has only passed one part of the state legislature so far, not yet law"
       }
     },
-    "flagNote": "Closest direct tie to the BRIGHT Act funding wave of any school checked — but nothing campus-specific is confirmed yet.",
+    "flagNote": "The closest direct tie to Massachusetts's pending construction loan bill of any school checked, but nothing specific to this campus is confirmed yet.",
     "details": {
       "admissions": {
-        "text": "Enrollment growth cited as a revenue driver in the FY25 annual report (specific figures not pulled this pass).",
-        "source": "BSU Annual Comprehensive Financial Report FY25",
-        "asOf": "FY ending Jun 2025"
+        "text": "The school's own financial report says enrollment growth is a factor in its revenue for the year ending June 2025, though we did not independently check the exact numbers.",
+        "source": "Bridgewater State's own annual financial report",
+        "asOf": "Year ending June 2025"
       },
       "financial": {
-        "text": "Directly named in the governor's BRIGHT Act announcement (statewide capital bond bill, House passed Nov 2025). Aa3 Moody's rating. FY25 capital funding improved Maxwell Library and renovated Burnell Hall.",
-        "source": "BSU Annual Comprehensive Financial Report; Barr & Barr",
-        "asOf": "FY25 report"
+        "text": "Bridgewater State is directly named in the governor's announcement of the BRIGHT Act, a statewide construction loan bill that passed the House in November 2025. The school holds an Aa3 credit rating from Moody's. In the year ending June 2025, state funding improved the Maxwell Library and renovated Burnell Hall.",
+        "source": "Bridgewater State's own annual financial report and Barr & Barr construction company",
+        "asOf": "2025 fiscal year report"
       },
       "housing": {
-        "text": "No waitlist policy — BSU's CDS checks 'No' to having one. Housing: 36% of first-years / 17% of all undergrads live in college housing.",
-        "source": "Bridgewater State University official Common Data Set 2020-21 PDF, Sections C2 & F1 (most recent published edition)",
-        "asOf": "2020-21"
+        "text": "The school reports that it does not run a waitlist at all. 36 percent of first year students and 17 percent of all undergraduates live in college housing, the most recent year we could find published.",
+        "source": "Bridgewater State's own reported enrollment data for 2020 to 2021, the most recent edition we could find",
+        "asOf": "2020 to 2021 school year"
       }
     }
   },
@@ -313,41 +313,41 @@
     "type": "Public",
     "state": "ME",
     "location": "Orono, ME",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 12,
-        "note": "$25M infrastructure bond active, but most capital work is donor-funded not bonded"
+        "note": "A $25 million loan for electrical work is active, but most current construction is paid for by donors, not loans"
       },
       "demand": {
         "score": 5,
-        "note": "Credit hours down 4% vs. budget, out-of-state enrollment dropped"
+        "note": "Credit hours are down 4 percent from budget, and fewer out of state students are enrolling"
       },
       "housing": {
         "score": 10,
-        "note": "Waitlist figures illegible in source PDF; 89.8%/38.0% housed"
+        "note": "The waitlist numbers in the source document were not readable; 89.8 percent of first years and 38 percent of all undergraduates live on campus"
       },
       "confirmation": {
         "score": 8,
-        "note": "One confirmed bond, but for infrastructure, not a building"
+        "note": "One loan is confirmed, but it is for electrical infrastructure, not a building"
       }
     },
-    "flagNote": "Genuine, well-documented need — but most current activity is donor-funded, not bond-driven. Weaker fit for a bond-timing pitch.",
+    "flagNote": "A real, well documented need, but most current construction is paid for by donors rather than loans, which makes it a weaker fit for a loan timing pitch.",
     "details": {
       "admissions": {
-        "text": "President's 2026 address: grad/postgrad enrollment up; credit hours down 4% vs. budget; out-of-state enrollment dropped.",
-        "source": "The Maine Campus, reporting the President's State of the University address",
-        "asOf": "Mar 2026"
+        "text": "The university president's 2026 address said graduate enrollment is up, but credit hours taught are down 4 percent from budget, and fewer out of state students are enrolling.",
+        "source": "The Maine Campus student newspaper, reporting the president's State of the University address",
+        "asOf": "March 2026"
       },
       "financial": {
-        "text": "Deferred maintenance backlog cited at three different figures across sources ($1.3B / $1.8B / $1.1B, not apples-to-apples). Active: $25M revenue bond (30-yr) for electrical infrastructure. ~10 capital projects completing 2026, several donor-funded rather than bonded.",
-        "source": "UMaine Office of Facilities Management; UMS Board minutes; Bangor Daily News",
-        "asOf": "Feb–Mar 2026"
+        "text": "Estimates for the school's total deferred maintenance backlog range widely across sources, from $1.1 billion to $1.8 billion, depending on the year and what is counted, so we are not treating any single number as fact. The school does have one active $25 million, 30 year loan for electrical infrastructure work. About 10 capital projects are finishing in 2026, and several of those are paid for by donors rather than loans.",
+        "source": "University of Maine's own facilities office, its governing board's meeting minutes, and the Bangor Daily News",
+        "asOf": "February to March 2026"
       },
       "housing": {
-        "text": "Waitlist fields present in the source PDF but no legible digits could be extracted this pass. Housing: 89.8% of first-years / 38.0% of all undergrads live in college housing.",
-        "source": "University of Maine official Common Data Set 2022-23 PDF, Sections C2 & F1 (2024-25/2025-26 editions exist but download access is blocked)",
-        "asOf": "2022-23"
+        "text": "The waitlist section of the source document exists, but the numbers in it were not legible enough to read this time. 89.8 percent of first year students and 38 percent of all undergraduates live in college housing.",
+        "source": "University of Maine's own reported enrollment data for 2022 to 2023, the most recent edition we could open (newer editions exist but were not accessible)",
+        "asOf": "2022 to 2023 school year"
       }
     }
   },
@@ -357,42 +357,42 @@
     "type": "Private",
     "state": "CT",
     "location": "West Hartford, CT",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "distressFlag": true,
     "subscores": {
       "financial": {
         "score": 3,
-        "note": "Bond rating downgraded to speculative grade; covenant breach; operating deficit"
+        "note": "Credit rating was downgraded below investment grade, the school broke a loan agreement, and it is running an operating deficit"
       },
       "demand": {
         "score": 5,
-        "note": "No growth signal found"
+        "note": "We did not find any sign that enrollment is growing"
       },
       "housing": {
         "score": 0,
-        "note": "No Common Data Set published anywhere on the school's site"
+        "note": "This school has not published enrollment data of this kind anywhere we could find"
       },
       "confirmation": {
         "score": 2,
-        "note": "Only past projects; no current pipeline"
+        "note": "Only past projects exist, nothing new is currently planned"
       }
     },
-    "flagNote": "Real signal, but a warning one: financial distress, not a construction-spend opportunity. Useful as a 'do not prioritize' data point, not a lead.",
+    "flagNote": "This is a real signal, but a warning one. This school is in financial trouble, not a construction spending opportunity, and should not be treated as a lead.",
     "details": {
       "admissions": {
-        "text": "4,223 undergrads (Fall 2024), 47% four-year grad rate, 74% receiving need-based aid.",
+        "text": "4,223 undergraduate students as of Fall 2024, a 47 percent four year graduation rate, and 74 percent of students receiving need based financial aid.",
         "source": "US News Best Colleges profile",
-        "asOf": "2026 edition (Fall 2024 data)"
+        "asOf": "2026 edition, based on Fall 2024 data"
       },
       "financial": {
-        "text": "S&P downgraded long-term bond rating from BBB- to BB+ (speculative grade), June 2025, on $154.5M in debt; negative outlook. FY operating deficit was $17.1M; breached a debt service coverage covenant on a $132M bond issued 2019.",
+        "text": "S&P downgraded the school's long term credit rating from BBB minus to BB plus, which is below investment grade, in June 2025, on $154.5 million of debt, with a negative outlook. The school's operating deficit for the year was $17.1 million, and it broke a debt coverage agreement tied to a $132 million loan from 2019.",
         "source": "Hartford Business Journal",
         "asOf": "June 2025"
       },
       "housing": {
-        "text": "No Common Data Set found on the university's site. The Institutional Effectiveness 'Fact Book' page hosts only live dashboards, and states further data requests go directly to the office.",
-        "source": "—",
-        "asOf": "—"
+        "text": "We could not find this kind of enrollment data published anywhere on the university's website. Its own institutional data page only shows live dashboards and tells people to contact the office directly for more.",
+        "source": "-",
+        "asOf": "-"
       }
     }
   },
@@ -402,41 +402,41 @@
     "type": "Private",
     "state": "NH",
     "location": "Manchester, NH",
-    "degrees": "Bachelor's–Doctoral",
+    "degrees": "Bachelor's to Doctoral",
     "subscores": {
       "financial": {
         "score": 8,
-        "note": "Only identified activity is a student center renovation; no bond signal"
+        "note": "The only construction activity found is one small renovation; no loan or bond signal was found"
       },
       "demand": {
         "score": 6,
-        "note": "Small physical campus by design, not a growth story"
+        "note": "The physical campus is intentionally small; this is not a growth story on campus, even though the school's online enrollment nationally is very large"
       },
       "housing": {
         "score": 0,
-        "note": "No Common Data Set published anywhere on the school's site"
+        "note": "This school has not published enrollment data of this kind anywhere we could find"
       },
       "confirmation": {
         "score": 5,
-        "note": "One small, confirmed renovation"
+        "note": "One small renovation is confirmed"
       }
     },
-    "flagNote": "Deliberately included as the quiet case — confirms the tool doesn't flag every school as exciting.",
+    "flagNote": "Included on purpose as the quiet case, to show this tool does not flag every school as exciting. The school's large online enrollment does not translate into on campus construction activity.",
     "details": {
       "admissions": {
-        "text": "2,615 on-campus undergrads (Fall 2024) — small physical campus despite SNHU's very large online enrollment nationally.",
+        "text": "2,615 students live and study on the physical campus as of Fall 2024, a small number compared to the school's very large national online enrollment.",
         "source": "US News Best Colleges profile",
-        "asOf": "2026 edition (Fall 2024 data)"
+        "asOf": "2026 edition, based on Fall 2024 data"
       },
       "financial": {
-        "text": "Only identified activity: a renovation of the Freese Student Center (contractor selected Oct 2025). No bond issuance or rating signal found this pass.",
-        "source": "New England Real Estate Journal (NEREJ)",
-        "asOf": "Oct 2025"
+        "text": "The only construction activity we found is a renovation of the Freese Student Center, with a contractor selected in October 2025. We did not find any loan, bond, or credit rating news for this school.",
+        "source": "New England Real Estate Journal",
+        "asOf": "October 2025"
       },
       "housing": {
-        "text": "No Common Data Set found on the university's site. The Consumer Information page makes no reference to one, and none turned up in library/IR archives.",
-        "source": "—",
-        "asOf": "—"
+        "text": "We could not find this kind of enrollment data published anywhere on the university's website. Its consumer information page does not mention one, and we found nothing in library or records archives either.",
+        "source": "-",
+        "asOf": "-"
       }
     }
   }
